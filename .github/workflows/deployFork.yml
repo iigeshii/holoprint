@@ -2,7 +2,7 @@ name: Deploy Fork
 on:
   push:
     branches:
-      - multiplayer-fix
+      - gesh-custom
   workflow_dispatch:
 permissions: read-all
 jobs:
@@ -20,7 +20,7 @@ jobs:
       - name: Build
         run: |
           npm ci -w pipeline
-          npm run build -- -- --version="multiplayer-fix-${GITHUB_SHA::7}"
+          npm run build -- -- --version="${GITHUB_REF_NAME}-${GITHUB_SHA::7}"
       - name: Upload files as artifact
         uses: actions/upload-pages-artifact@v5
         with:
