@@ -16,6 +16,7 @@ import ResizingInput from "./components/ResizingInput.js";
 
 const IN_PRODUCTION = false;
 const ACTUAL_CONSOLE_LOG = false;
+const RECORD_PACK_CREATIONS = false; // this is a fork; don't add its packs to HoloPrint's usage statistics
 
 const supabaseProjectUrl = "https://gnzyfffwvulwxbczqpgl.supabase.co";
 const supabaseApiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImduenlmZmZ3dnVsd3hiY3pxcGdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjMwMjE3NzgsImV4cCI6MjAzODU5Nzc3OH0.AWMhFcP3PiMD3dMC_SeIVuPx128KVpgfkZ5qBStDuVw";
@@ -709,7 +710,7 @@ async function makePack(structureFiles, localResourcePacks) {
 		infoButton.classList.add("completed");
 		let hasLoggedPackCreation = false;
 		infoButton.onclick = () => {
-			if(!hasLoggedPackCreation && IN_PRODUCTION) {
+			if(!hasLoggedPackCreation && IN_PRODUCTION && RECORD_PACK_CREATIONS) {
 				hasLoggedPackCreation = true;
 				void async function() {
 					supabaseLogger ??= await SupabaseLogger.new(supabaseProjectUrl, supabaseApiKey);
