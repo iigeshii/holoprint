@@ -27,6 +27,8 @@ export type HoloPrintConfig = {
 	/** How much to scale control item overlay textures. When compositing textures, MCBE scales all textures to the maximum, so the size of the overlay control texture has to be the LCM of itself and in-game items. Hence, if in-game items have a higher resolution than expected, they will probably be scaled wrong. The solution is to scale the overlay textures even more, which can be adjusted with this. */
 	CONTROL_ITEM_TEXTURE_SCALE: number;
 	RENAME_CONTROL_ITEMS: boolean;
+	/** Disables attachables on players and draws their armour with render controllers instead. Attachables wipe the temp variables that player and UI controls rely on, so without this, nearby players wearing armour break the controls. */
+	PLAYER_ARMOR_FIX: boolean;
 	/** Clamped colour quartet */
 	WRONG_BLOCK_OVERLAY_COLOR: Vec4;
 	INITIAL_OFFSET: Vec3;

@@ -16,6 +16,7 @@ import EntityGeoMaker from "./EntityGeoMaker.js";
 import EntityManager from "./EntityManager.js";
 import StructureDiagramMaker from "./StructureDiagramMaker.js";
 import PackBuilder from "./PackBuilder.js";
+import makePlayerArmorFix from "./PlayerArmorFix.js";
 
 export const VERSION = "dev";
 export const IGNORED_BLOCKS = ["air", "piston_arm_collision", "sticky_piston_arm_collision", "light_block", "light_block_0", "light_block_1", "light_block_2", "light_block_3", "light_block_4", "light_block_5", "light_block_6", "light_block_7", "light_block_8", "light_block_9", "light_block_10", "light_block_11", "light_block_12", "light_block_13", "light_block_14", "light_block_15"]; // blocks to be ignored when scanning the structure file
@@ -154,7 +155,8 @@ export async function makePack(structureFiles, partialConfig, resourcePackStack 
 		defaultPlayerRenderControllers: config.PLAYER_CONTROLS_ENABLED? "render_controllers/player.render_controllers.json" : undefined,
 		resourceItemTexture: config.RETEXTURE_CONTROL_ITEMS? "textures/item_texture.json" : undefined
 	}, resourcePackStack);
-	
+	let playerArmorFixPromise = config.PLAYER_ARMOR_FIX && (config.PLAYER_CONTROLS_ENABLED || config.UI_CONTROLS_ENABLED)? makePlayerArmorFix(resourcePackStack) : undefined;
+
 	let controlsHaveBeenCustomised = JSON.stringify(config.CONTROLS) != JSON.stringify(DEFAULT_PLAYER_CONTROLS);
 	let itemTagsPromise;
 	if(controlsHaveBeenCustomised || config.RENAME_CONTROL_ITEMS || config.RETEXTURE_CONTROL_ITEMS) {
@@ -488,6 +490,11 @@ export async function makePack(structureFiles, partialConfig, resourcePackStack 
 	if(config.PLAYER_CONTROLS_ENABLED) {
 		packBuilder.addFile("render_controllers/player.render_controllers.json", playerRenderControllers);
 	}
+	if(playerArmorFixPromise) {
+		let { playerEntity, armorRenderControllers } = await playerArmorFixPromise;
+		packBuilder.addFile("entity/player.entity.json", playerEntity);
+		packBuilder.addFile("render_controllers/holoprint.player_armor.render_controllers.json", armorRenderControllers);
+	}
 	uniqueBlocksToValidate.forEach(blockName => {
 		let particleName = `validate_${blockName.replace(":", ".")}`; // file names can't have : in them
 		let particle = structuredClone(blockValidationParticle);
@@ -681,6 +688,7 @@ export function addDefaultConfig(config) {
 			RETEXTURE_CONTROL_ITEMS: true,
 			CONTROL_ITEM_TEXTURE_SCALE: 1,
 			RENAME_CONTROL_ITEMS: true,
+			PLAYER_ARMOR_FIX: true,
 			WRONG_BLOCK_OVERLAY_COLOR: tuple([1, 0, 0, 0.3]),
 			INITIAL_OFFSET: tuple([0, 0, 0]),
 			COORDINATE_LOCK: undefined,

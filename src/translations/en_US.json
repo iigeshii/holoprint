@@ -73,6 +73,7 @@
 	"settings.features.ui_controls": "UI controls:",
 	"settings.features.retexture_control_items": "Retexture control items:",
 	"settings.features.rename_control_items": "Rename control items:",
+	"settings.features.player_armor_fix": "Multiplayer armour fix:",
 	"settings.ghost_block_scale": "Ghost block scale:",
 	"settings.initial_offset": "Initial offset:",
 	"settings.ignored_blocks": "Ignored blocks:",

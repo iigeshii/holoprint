@@ -73,6 +73,7 @@
   "settings.features.ui_controls": "UI 控制:",
   "settings.features.retexture_control_items": "控件贴图设置:",
   "settings.features.rename_control_items": "重命名控件:",
+  "settings.features.player_armor_fix": "多人游戏盔甲修复:",
   "settings.ghost_block_scale": "方块缩放比例:",
   "settings.initial_offset": "起始偏移:",
   "settings.ignored_blocks": "忽略的方块:",

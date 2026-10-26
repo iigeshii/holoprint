@@ -497,14 +497,14 @@ function playerBroadcastActions() {
 	}
 }
 function playerFirstPerson() {
-	if(!q.is_in_ui && !v.map_face_icon) {
+	if(!q.is_in_ui && !v.map_face_icon && q.is_local_player) { // other players' render controllers would overwrite our actions in the temp variables
 		$[initVariables]
 		$[renderingControls]
 		$[broadcastActions]
 	}
 }
 function playerThirdPerson() {
-	if(!q.is_in_ui) {
+	if(!q.is_in_ui && q.is_local_player) {
 		$[initVariables]
 		$[renderingControls]
 		$[broadcastActions]

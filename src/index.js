@@ -653,6 +653,7 @@ async function makePack(structureFiles, localResourcePacks) {
 		RETEXTURE_CONTROL_ITEMS: !!formData.get("retextureControlItems"),
 		CONTROL_ITEM_TEXTURE_SCALE: +formData.get("controlItemTextureScale"),
 		RENAME_CONTROL_ITEMS: !!formData.get("renameControlItems"),
+		PLAYER_ARMOR_FIX: !!formData.get("playerArmorFix"),
 		// @ts-expect-error
 		CONTROLS: Object.fromEntries(Array.from(formData).filter(([key]) => key.startsWith("control.")).map(([key, value]) => [key.replace(/^control./, ""), JSON.parse(value)])),
 		// @ts-expect-error
