@@ -33,6 +33,9 @@ body {
 h1 {
 	margin: 6px 0;
 }
+#forkNotice {
+	margin: 0 0 6px;
+}
 form {
 	text-align: left;
 }

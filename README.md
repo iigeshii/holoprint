@@ -1,6 +1,17 @@
 ![HoloPrint](images/banner.png)
 
 [![简体中文](https://img.shields.io/badge/Language-简体中文-blue)](README.zh-CN.md)
+
+> [!IMPORTANT]
+> **This is an unofficial fork** of [HoloPrint](https://github.com/SuperLlama88888/holoprint) by [SuperLlama88888](https://github.com/SuperLlama88888). It is not affiliated with or endorsed by HoloPrint. Please report problems with this fork here, not to HoloPrint.
+>
+> The [`multiplayer-fix`](https://github.com/iigeshii/holoprint/tree/multiplayer-fix) branch fixes player and UI controls (the touch buttons and F10 keybinds) breaking when another player is nearby, especially one wearing armour. It's hosted at **https://iigeshii.github.io/holoprint/**.
+> - Only the local player now sends control actions, so other players can't overwrite yours.
+> - The new **Multiplayer armour fix** setting (on by default) disables attachables on players, which wipe the variables the controls rely on, and redraws their armour on the player model instead. Trade-offs: player armour has no enchantment glint, trims or leather dye; elytra aren't drawn; shields, spears, spyglasses and maces show as plain items.
+> - Packs made with this fork keep HoloPrint's credits and license and are marked as modified. This fork doesn't record pack creations in HoloPrint's usage statistics.
+>
+> Everything else below is HoloPrint's original README. HoloPrint and this fork are licensed under [CC BY-NC-SA 4.0](LICENSE).
+
 ### About
 HoloPrint is a web app that converts MCBE structure files into resource packs showing holograms of builds. It builds off the work of [Structura](https://github.com/RavinMaddHatter/Structura), a similar project. Both Structura and HoloPrint aim to recreate the experience of Java Edition mods like [Litematica](https://github.com/maruohon/litematica) and [Schematica](https://github.com/Lunatrius/Schematica) for Bedrock Edition users through resource packs.
 
