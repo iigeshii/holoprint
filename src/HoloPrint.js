@@ -1388,6 +1388,13 @@ function makeLangFiles(config, packTemplateLangFiles, packName, materialList, ex
 		} else {
 			langFile = langFile.replaceAll("{DESCRIPTION_SECTION}", "");
 		}
+		// list the placement settings, so they can be reused when making an improved version of the pack later
+		let settingsSection = langFile.match(/pack\.description\.initial_offset=([^\t#\n]+)/)[1].replaceAll("{INITIAL_OFFSET}", config.INITIAL_OFFSET.join(", "));
+		if(config.COORDINATE_LOCK) {
+			let coordinateLocks = config.COORDINATE_LOCK.map(([x, y, z, rotation]) => `${x}, ${y}, ${z} (${rotation}°)`).join("; ");
+			settingsSection += langFile.match(/pack\.description\.coordinate_lock=([^\t#\n]+)/)[1].replaceAll("{COORDINATE_LOCK}", coordinateLocks);
+		}
+		langFile = langFile.replaceAll("{SETTINGS_SECTION}", settingsSection);
 		let translatedDisabledFeatures = Object.entries(disabledFeatureTranslations).filter(([feature]) => !config[feature]).map(([_, translationKey]) => langFile.match(new RegExp(`pack\\.description\\.${translationKey}=([^\\t#\\n]+)`))[1]).join("\\n");
 		if(translatedDisabledFeatures) {
 			langFile = langFile.replaceAll("{DISABLED_FEATURES}", translatedDisabledFeatures);

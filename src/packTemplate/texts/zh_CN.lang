@@ -1,6 +1,8 @@
-pack.description=§u★全息打印§r 资源包生成于 §o{PACK_GENERATION_TIME}§r\n开发者： §l§6SuperLlama88888§r\n由非官方分支 §uiigeshii/holoprint§r（多人游戏修复）修改{AUTHORS_SECTION}{DESCRIPTION_SECTION}{DISABLED_FEATURES_SECTION}{CONTROLS_SECTION}\n\n§l总方块数： {TOTAL_MATERIAL_COUNT}\n§r{MATERIAL_LIST}	## ★ at the start forces unicode font which makes it smaller so more text fits in
+pack.description=§u★全息打印§r 资源包生成于 §o{PACK_GENERATION_TIME}§r\n开发者： §l§6SuperLlama88888§r\n由非官方分支 §uiigeshii/holoprint§r（多人游戏修复）修改{AUTHORS_SECTION}{DESCRIPTION_SECTION}{SETTINGS_SECTION}{DISABLED_FEATURES_SECTION}{CONTROLS_SECTION}\n\n§l总方块数： {TOTAL_MATERIAL_COUNT}\n§r{MATERIAL_LIST}	## ★ at the start forces unicode font which makes it smaller so more text fits in
 pack.description.authors=\n结构作者： {STRUCTURE_AUTHORS[ and ]}	## Authors/Description/Controls will be substituted into the actual description by the JS
 pack.description.description=\n{DESCRIPTION}
+pack.description.initial_offset=\n§7初始偏移: {INITIAL_OFFSET}§r
+pack.description.coordinate_lock=\n§7坐标锁定: {COORDINATE_LOCK}§r
 pack.description.disabled_features=\n§4§o{DISABLED_FEATURES}§r
 pack.description.controls=\n\n§l控制：§r{CONTROLS}
 
